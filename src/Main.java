@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        DbSql db = new DbSql();
+        DbSql db=new DbSql();
+        db.alleStuderende();
 
-        Scanner input = new Scanner(System.in);
+
+        Scanner input=new Scanner(System.in);
         System.out.println("1. Opret Studerende");
         System.out.println("2. Opret fag");
         System.out.println("3. Tilmeld studerende til fag");
@@ -18,10 +20,10 @@ public class Main {
         System.out.println("7. Søg oplysninger om en studerende");
         System.out.println("8. Søg oplysninger om et fag");
         System.out.println("Indtast dit valg: ");
-        int valg = input.nextInt();
-        switch (valg) {
+        int valg=input.nextInt();
+        switch(valg){
             case 1:
-                Studerende s = new Studerende(15, "Mikkel", "Jensen", "Holbækvej 13", "2200", "11 22 33 55", 'a');
+                Studerende s= new Studerende(14,"Mikkel","Jensen","Holbækvej 13","2200","11223355",'a');
                 db.opretStuderende(s);
                 break;
             case 2:
@@ -29,16 +31,31 @@ public class Main {
                 db.opretFag(f1);
                 break;
             case 3:
-                db.tilmeldStudereneTilFag(1,2,12);
+                db.tilmeldStudereneTilFag(1,1,10);
                 break;
             case 4:
+
                 break;
             case 5:
-                db.alleStuderende();
+                ArrayList<Studerende>studliste=db.alleStuderende();
+                udskrivAlleStuderende(studliste);
                 break;
             case 6:
-                db.alleFag();
+                ArrayList<Fag>fagListe=db.alleFag();
+                udskrivAllefag(fagListe);
+                break;
+            case 7:
+                break;
+            case 8:
+
                 break;
         }
+    }
+    public static void udskrivAlleStuderende(ArrayList<Studerende>a){
+        System.out.println(a);
+
+    }
+    public static void udskrivAllefag(ArrayList<Fag>a) {
+        System.out.println(a);
     }
 }
